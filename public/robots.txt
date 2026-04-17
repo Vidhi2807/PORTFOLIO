@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vidhi-mandaliya.vercel.app/sitemap.xml
