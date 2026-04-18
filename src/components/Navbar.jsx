@@ -81,42 +81,62 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden">
+        {/* Mobile Toggle Button */}
+        <div className="md:hidden relative z-[60]">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-foreground/70 hover:text-primary transition-colors"
+            className="p-2 bg-white/5 rounded-full text-foreground/70 hover:text-primary transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border"
-          >
-            <div className="flex flex-col p-6 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.to}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-foreground/70 hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="pt-4 border-t border-border/50 flex justify-center">
+          <>
+            {/* Screen Dimming Overlay */}
+            <motion.div 
+               initial={{ opacity: 0 }} 
+               animate={{ opacity: 1 }} 
+               exit={{ opacity: 0 }} 
+               onClick={() => setIsOpen(false)}
+               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] md:hidden"
+            />
+            
+            {/* Right Side Sliding Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-[80vw] max-w-sm bg-background/95 backdrop-blur-3xl border-l border-white/10 z-[60] shadow-2xl flex flex-col md:hidden pt-24"
+            >
+              <div className="flex flex-col px-8 space-y-6 overflow-y-auto w-full">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + (i * 0.05) }}
+                  >
+                    <Link
+                      to={link.to}
+                      onClick={() => setIsOpen(false)}
+                      className="text-3xl font-black text-foreground/80 hover:text-primary transition-colors flex items-center group"
+                    >
+                      <span className="text-primary/0 group-hover:text-primary transition-colors mr-2 text-xl block">•</span>
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-auto p-8 flex justify-center border-t border-white/10">
                 <ThemeToggle />
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
