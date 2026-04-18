@@ -18,6 +18,8 @@ const hackathons = [
     teammates: ["Dhvanit Kanabar", "Harshit Pandya", "Devanshi Vadiya"],
     link: "https://cers-plus.web.app/",
     color: "#f59e0b",  // amber — SU2026
+    alignBtn: "items-end",
+    image: "https://images.unsplash.com/photo-1542621334-a254cf47733d?q=80&w=2070&auto=format&fit=crop", // Add your team photo here!
   },
   {
     title: "Craftathon",
@@ -27,18 +29,21 @@ const hackathons = [
     duration: "36 hrs",
     problem: "Farmers receive complex soil reports (N, P, K, pH, micronutrients) that are hard to interpret, leading to poor crop selection and inefficient fertilizer usage.",
     solution: "Built Fasal Rakshak — an AgriTech platform providing smart crop recommendations, fertilizer guidance, soil health analysis with deficiency detection, and multi-input support (manual, PDF, image OCR) in a farmer-friendly interface.",
-    outcome: "🏆 Ranked 9th out of 134 teams. Cleared multiple rounds to reach Top 25, then Top 10 in the final standings.",
+    outcome: "🥈 Ranked 2nd Domain-wise and 9th overall out of 130+ teams. Cleared multiple rounds.",
     tech: ["React", "Firebase", "AI/ML", "OCR", "Leaflet"],
-    achievements: ["Top 10 🏆", "9th / 134 Teams", "Cleared Multiple Evaluation Rounds"],
+    achievements: ["2nd Winner (Domain-wise) 🥈", "9th Position out of 130+ Teams"],
     teammates: ["Dhvanit Kanabar", "Rishikesh Singh", "Kamlesh Chandela"],
     link: "https://fasalrakshak.vercel.app",
     color: "#10b981",  // emerald — Craftathon
+    alignBtn: "items-end",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop", // Add your team photo here!
   },
   {
     title: "ElectroSphere 2K26",
     role: "Full Stack Developer",
     team: "Team InnovateX",
-    date: "Jan 2026",
+    date: "Jan 7, 2026",
+    duration: "24 hrs",
     problem: "Security tools often glorify exploitation. There was a gap for an ethical, explainable platform that teaches security through structured risk reasoning rather than live attacks.",
     solution: "Built ThreatLens — a static cybersecurity analysis & threat-modeling platform that analyzes system architectures to identify risks, attack surfaces, and trust boundaries with clear, academically defensible explanations. No payloads. No weaponization.",
     outcome: "🥈 Secured 2nd Place in Software Edition at ElectroSphere DM 2K26 organized by TechX Club, Swaminarayan University.",
@@ -47,6 +52,8 @@ const hackathons = [
     teammates: ["Chitt Hirapara", "Rachit Kakkad", "Vineet Prajapati"],
     link: "https://aura-eight-phi.vercel.app/",
     color: "#6366f1",  // indigo — ElectroSphere
+    alignBtn: "items-start",
+    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=2070&auto=format&fit=crop", // Add your team photo here!
   },
 ];
 
@@ -70,7 +77,7 @@ export default function Hackathon() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {hackathons.map((hack, i) => (
             <motion.div
               key={i}
@@ -78,83 +85,93 @@ export default function Hackathon() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative h-full"
+              className="group relative h-full w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
             >
-              <div className="glass p-8 rounded-[2.5rem] border-white/5 h-full transition-all duration-500 hover:border-primary/30 hover:shadow-2xl">
-                
-                <div className="flex items-center justify-between mb-8">
-                  <div className="p-4 rounded-2xl text-white shadow-lg" style={{ background: hack.color }}>
-                    <Trophy size={24} />
+              <div className="group [perspective:1000px] h-[480px]">
+                <div className="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(180deg)]">
+                  
+                  {/* ── FRONT (Image + Basic Info) ── */}
+                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-[2.5rem] border overflow-hidden"
+                       style={{ borderColor: `${hack.color}40`, boxShadow: `0 20px 40px ${hack.color}15` }}>
+                     <img src={hack.image} alt={hack.title} className="w-full h-full object-cover transition-transform duration-1000 group-[.group-hover]:scale-110" />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                     
+                     <div className="absolute top-6 left-6 p-4 rounded-2xl text-white shadow-xl backdrop-blur-md" style={{ background: `${hack.color}90` }}>
+                        <Trophy size={24} />
+                     </div>
+                     <div className="absolute top-6 right-6">
+                        <div className="px-3 py-1.5 rounded-xl bg-black/60 text-white backdrop-blur-md border border-white/10 text-[9px] font-black uppercase tracking-widest flex items-center gap-2">
+                           <Calendar size={12} /> {hack.date}
+                        </div>
+                     </div>
+                     
+                     <div className="absolute bottom-6 left-6 right-6">
+                        <h3 className="text-2xl md:text-3xl font-black mb-2 text-white leading-tight">{hack.title}</h3>
+                        <div className="flex items-center gap-2 font-bold text-[10px] mb-3 uppercase tracking-widest opacity-90" style={{ color: hack.color }}>
+                          <Users size={14} /> {hack.role}
+                        </div>
+                        {hack.team && (
+                          <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                            {hack.team}
+                            {hack.teammates?.length > 0 && (
+                               <span className="normal-case ml-2 text-white/40 font-normal truncate inline-block align-bottom max-w-[150px] sm:max-w-[200px]">
+                               · {hack.teammates.join(", ")}
+                               </span>
+                            )}
+                          </div>
+                        )}
+                        <p className="mt-5 text-[9px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-2">
+                          Hover to view details <Sparkles size={12} />
+                        </p>
+                     </div>
                   </div>
-                  <div className="flex flex-col items-end gap-1">
-                    <div className="text-xs font-bold text-foreground/40 uppercase tracking-widest flex items-center gap-2">
-                      <Calendar size={14} /> {hack.date}
-                    </div>
-                    {hack.duration && (
-                      <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                        ⏱ {hack.duration}
-                      </span>
-                    )}
+
+                  {/* ── BACK (Text Details + Actions) ── */}
+                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[2.5rem] border overflow-hidden glass p-6 sm:p-8 flex flex-col"
+                       style={{ borderColor: `${hack.color}40` }}>
+                      <div className="absolute inset-0 opacity-[0.03]" style={{ background: `radial-gradient(circle at 50% 50%, ${hack.color}, transparent 70%)` }} />
+                      
+                      <div className="relative z-10 flex-grow space-y-4 overflow-y-auto">
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-widest mb-1 block" style={{ color: hack.color }}>Problem</span>
+                          <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed font-medium">{hack.problem}</p>
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-widest mb-1 block" style={{ color: "#10b981" }}>Solution</span>
+                          <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed font-medium">{hack.solution}</p>
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-widest mb-1 block" style={{ color: "#f59e0b" }}>Outcome</span>
+                          <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed font-bold">{hack.outcome}</p>
+                        </div>
+                        
+                        <div className="pt-2 flex flex-wrap gap-2">
+                          {hack.tech.map((t, idx) => (
+                            <span key={idx} className="px-2.5 py-1 bg-white/5 rounded text-[9px] font-bold text-foreground/50 border border-white/5">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Footer Actions */}
+                      <div className={`relative z-10 mt-4 pt-4 border-t border-white/10 flex ${hack.alignBtn} justify-between`}>
+                         <div className="flex flex-col gap-1.5">
+                           {hack.achievements.map((ach, idx) => (
+                             <div key={idx} className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest mt-1" style={{ color: hack.color }}>
+                               <Target size={12} /> <span className="truncate max-w-[150px] sm:max-w-[200px]">{ach}</span>
+                             </div>
+                           ))}
+                         </div>
+                         <a href={hack.link} target="_blank" rel="noopener noreferrer" 
+                            className="flex items-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-lg text-white shadow-md hover:scale-105 transition-all outline-none shrink-0"
+                            style={{ background: hack.color }}>
+                           <span className="hidden sm:block text-[9px] font-black uppercase tracking-widest whitespace-nowrap">Demo</span>
+                           <ExternalLink size={12} />
+                         </a>
+                      </div>
                   </div>
                 </div>
-
-                <h3 className="text-2xl font-black mb-2 group-hover:text-primary transition-colors">{hack.title}</h3>
-                <div className="flex items-center gap-2 text-primary font-bold text-xs mb-1 uppercase tracking-widest opacity-60">
-                  <Users size={16} /> {hack.role}
-                </div>
-                {hack.team && (
-                  <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mb-4">
-                    {hack.team}
-                    {hack.teammates?.length > 0 && (
-                      <span className="normal-case ml-2 text-foreground/20 font-normal">
-                        · {hack.teammates.join(", ")}
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                {/* Detailed Narrative */}
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <span className="text-[10px] font-black uppercase text-primary tracking-widest mb-1 block">Problem</span>
-                    <p className="text-sm text-foreground/60 leading-relaxed">{hack.problem}</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest mb-1 block" style={{ color: "#10b981" }}>Solution</span>
-                    <p className="text-sm text-foreground/60 leading-relaxed">{hack.solution}</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest mb-1 block" style={{ color: "#f59e0b" }}>Outcome</span>
-                    <p className="text-sm text-foreground/60 leading-relaxed font-bold">{hack.outcome}</p>
-                  </div>
-                </div>
-
-                {/* Achievements & Tags */}
-                <div className="pt-6 border-t border-white/5 flex flex-wrap gap-2 mb-6">
-                  {hack.tech.map((t, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-white/5 rounded-lg text-[9px] font-bold text-foreground/40 border border-white/5">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="space-y-2">
-                  {hack.achievements.map((ach, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-[10px] font-bold text-primary/80 uppercase tracking-wider">
-                      <Target size={14} style={{ color: "#f59e0b" }} />
-                      {ach}
-                    </div>
-                  ))}
-                </div>
-
-                <a 
-                  href={hack.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  View Repo <ExternalLink size={14} />
-                </a>
               </div>
             </motion.div>
           ))}
