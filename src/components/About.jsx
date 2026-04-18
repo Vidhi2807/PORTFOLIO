@@ -19,7 +19,7 @@ export default function About() {
               className="text-4xl md:text-5xl font-black mb-8 tracking-tight cursor-default inline-block"
               whileHover={{ 
                 rotateX: 360,
-                color: "#10b981" // Emerald-500
+                color: "#6366f1"
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
@@ -32,9 +32,9 @@ export default function About() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: <Code2 className="text-blue-400" />, title: "Strategy", desc: "Digital roadmap" },
-                { icon: <Palette className="text-purple-400" />, title: "Design", desc: "User-centric UI" },
-                { icon: <Sparkles className="text-yellow-400" />, title: "Quality", desc: "Clean codebase" },
+                { icon: <Code2 style={{ color: "#6366f1" }} />, title: "Strategy", desc: "Digital roadmap" },
+                { icon: <Palette style={{ color: "#10b981" }} />, title: "Design", desc: "User-centric UI" },
+                { icon: <Sparkles style={{ color: "#f59e0b" }} />, title: "Quality", desc: "Clean codebase" },
               ].map((item, i) => (
                 <div key={i} className="glass p-5 rounded-2xl border-white/5 hover:bg-white/5 transition-all">
                   <div className="mb-4 bg-white/5 w-fit p-3 rounded-xl">{item.icon}</div>

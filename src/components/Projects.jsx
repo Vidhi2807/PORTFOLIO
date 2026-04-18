@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, FileText, ArrowUpRight, ShieldCheck, Sparkles, Activity, Lock, Globe, Code2, Cpu, Sprout, Database, Youtube } from "lucide-react";
 
+/* ─── 4 Education palette colors ───────────────────────── */
+const C1 = "#6366f1"; // indigo
+const C2 = "#f43f5e"; // rose
+const C3 = "#10b981"; // emerald
+const C4 = "#f59e0b"; // amber
+
 const projects = [
   {
     title: "Aura: AI-Powered Productivity",
     category: "Full Stack",
-    catColor: "from-purple-500 to-indigo-500",
+    accentColor: C1,
     desc: "An all-in-one productivity ecosystem designed to eliminate 'context switching'. AI-driven task management with a minimalist interface.",
     fullDesc: "Aura is a digital brain designed to solve 'App Fatigue.' It integrates notes, tasks, and AI assistance into one cohesive workspace.",
     tech: ["React.js", "Firebase", "Google Gemini API"],
@@ -17,12 +23,12 @@ const projects = [
     youtube: "https://www.youtube.com/shorts/Ni2YHZd58vc",
     postman: "https://www.postman.com/workspace/aura-api",
     figma: "https://www.figma.com/file/aura-design",
-    icon: <Sparkles className="text-purple-400" size={24} />
+    icon: <Sparkles style={{ color: C1 }} size={24} />
   },
   {
     title: "CERS: Emergency Response",
     category: "Full Stack",
-    catColor: "from-red-500 to-orange-500",
+    accentColor: C2,
     desc: "Professional-grade Emergency Response System featuring AI dispatch and live satellite tracking.",
     fullDesc: "CERS+ bridges the gap between patients, hospitals, and responders. It leverages Google Maps AI for traffic routing.",
     tech: ["React 19", "Firebase", "Google Maps API"],
@@ -32,12 +38,12 @@ const projects = [
     docs: "https://docs.google.com/document/d/14ZjNFonU1irIVIhCVTTQ3LGwMjdZT8sMr1dZ0HN732Y/edit?usp=sharing",
     youtube: "https://youtube.com/demo-cers",
     postman: "https://postman.com/cers-api",
-    icon: <Activity className="text-red-400" size={24} />
+    icon: <Activity style={{ color: C2 }} size={24} />
   },
   {
     title: "Hackers Panel",
     category: "Games",
-    catColor: "from-green-500 to-emerald-500",
+    accentColor: C3,
     desc: "Interactive, gamified learning platform built for the iFest Hackathon to teach technical security concepts.",
     fullDesc: "A hands-on environment giving users a front-row seat to how cyberattacks work through interactive simulations.",
     tech: ["HTML5", "JavaScript", "Animations"],
@@ -46,12 +52,12 @@ const projects = [
     github: "https://github.com/Vidhi2807/cybersecurity-prj",
     docs: "https://docs.google.com/document/d/1sT7jKXFQB1DxBCT-WN5Pbe2jVgghKJ_GtL8NjbxZ_0M/edit?usp=sharing",
     youtube: "https://youtube.com/hackers-panel",
-    icon: <ShieldCheck className="text-green-400" size={24} />
+    icon: <ShieldCheck style={{ color: C3 }} size={24} />
   },
   {
     title: "Eco Cart Clone",
     category: "Clones",
-    catColor: "from-blue-500 to-cyan-500",
+    accentColor: C4,
     desc: "A high-fidelity clone of a modern e-commerce platform focusing on performance and clean UI transitions.",
     fullDesc: "Built to demonstrate mastery of complex layouts and state management in a shopping environment.",
     tech: ["React", "Redux", "Tailwind"],
@@ -59,12 +65,12 @@ const projects = [
     link: "https://github.com/Vidhi2807/Secure-Comm",
     github: "https://github.com/Vidhi2807/Secure-Comm",
     docs: "https://github.com/Vidhi2807/Secure-Comm",
-    icon: <Globe className="text-blue-400" size={24} />
+    icon: <Globe style={{ color: C4 }} size={24} />
   },
   {
     title: "FasalRakshak: Smart Agriculture",
     category: "Full Stack",
-    catColor: "from-green-500 to-emerald-500",
+    accentColor: C3,
     desc: "AI ecosystem for farmers featuring real-time crop disease diagnosis and expert consultations.",
     fullDesc: "An intelligent ecosystem for farmers featuring real-time crop disease diagnosis and hyper-local weather tracking.",
     tech: ["React", "Firebase", "AI/ML", "Leaflet"],
@@ -74,7 +80,7 @@ const projects = [
     docs: "https://docs.google.com/document/d/1RNWOhx0Y8nU3cvCcI_uGzPHpLsUmFcn4yBj7hnDC1LU/edit?usp=sharing",
     youtube: "https://youtube.com/fasalrakshak",
     postman: "https://postman.com/fasalrakshak-api",
-    icon: <Sprout size={24} className="text-green-400" />
+    icon: <Sprout size={24} style={{ color: C3 }} />
   }
 ];
 
@@ -165,7 +171,7 @@ export default function Projects() {
                       className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     />
                     <div className="absolute top-6 left-6 z-20">
-                      <div className={`px-4 py-1.5 rounded-xl bg-gradient-to-r ${project.catColor} text-white text-[8px] font-black uppercase tracking-widest shadow-xl`}>
+                      <div className="px-4 py-1.5 rounded-xl text-white text-[8px] font-black uppercase tracking-widest shadow-xl" style={{ background: project.accentColor }}>
                         {project.category}
                       </div>
                     </div>
@@ -184,11 +190,11 @@ export default function Projects() {
                     {/* Action Links */}
                     <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border/50">
                        {[
-                         { icon: <Github size={16} />, link: project.github, label: "Code", color: "bg-foreground text-background" },
-                         { icon: <ExternalLink size={16} />, link: project.link, label: "Live", color: "bg-primary text-white" },
-                         { icon: <Youtube size={16} />, link: project.youtube, label: "Demo", color: "bg-red-500/10 text-red-500 border border-red-500/20" },
-                         { icon: <Database size={16} />, link: project.postman, label: "API Docs", color: "bg-orange-500/10 text-orange-500 border border-orange-500/20", show: project.postman },
-                         { icon: <FileText size={16} />, link: project.figma, label: "Figma", color: "bg-purple-500/10 text-purple-500 border border-purple-500/20", show: project.figma }
+                         { icon: <Github size={16} />, link: project.github, label: "Code", style: { background: "#6366f120", color: "#6366f1", border: "1px solid #6366f140" } },
+                         { icon: <ExternalLink size={16} />, link: project.link, label: "Live", style: { background: "#6366f1", color: "#fff" } },
+                         { icon: <Youtube size={16} />, link: project.youtube, label: "Demo", style: { background: "#f43f5e15", color: "#f43f5e", border: "1px solid #f43f5e30" } },
+                         { icon: <Database size={16} />, link: project.postman, label: "API Docs", style: { background: "#f59e0b15", color: "#f59e0b", border: "1px solid #f59e0b30" }, show: project.postman },
+                         { icon: <FileText size={16} />, link: project.figma, label: "Figma", style: { background: "#10b98115", color: "#10b981", border: "1px solid #10b98130" }, show: project.figma }
                        ].filter(a => a.show !== false && a.link).map((action, idx) => (
                          <motion.a
                            key={idx}
@@ -197,7 +203,8 @@ export default function Projects() {
                            rel="noopener noreferrer"
                            whileHover={{ scale: 1.05, y: -2 }}
                            whileTap={{ scale: 0.95 }}
-                           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${action.color}`}
+                           className="flex items-center gap-2 px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all"
+                           style={action.style}
                          >
                            {action.icon}
                            {action.label}

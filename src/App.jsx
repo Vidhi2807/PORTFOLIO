@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { BrowserRouter, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,6 +13,21 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
 
+// Watches URL path and smoothly scrolls to matching section (no # needed)
+function ScrollHandler() {
+  const location = useLocation();
+  useEffect(() => {
+    const path = location.pathname.replace("/", "").trim();
+    if (path) {
+      const el = document.getElementById(path);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.pathname]);
+  return null;
+}
+
 function App() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -21,6 +37,7 @@ function App() {
   });
 
   return (
+    <BrowserRouter>
     <div className="bg-background text-foreground min-h-screen selection:bg-primary/30 selection:text-primary-foreground">
       {/* Progress Bar */}
       <motion.div
@@ -28,6 +45,7 @@ function App() {
         style={{ scaleX }}
       />
       
+      <ScrollHandler />
       <Navbar />
       
       <main>
@@ -71,6 +89,7 @@ function App() {
         </svg>
       </button>
     </div>
+    </BrowserRouter>
   );
 }
 

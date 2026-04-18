@@ -11,7 +11,7 @@ const certificates = [
     badge: "Participant",
     badgeColor: "#6366f1",
     desc: "Code Pulse — Innovation & Technological Advancement in Textile City Bhilwara, organized by Dept. of CS & Engineering.",
-    image: "/certificates/su-hackathon.jpg",
+    image: "/certificates/su.jpg",
   },
   {
     name: "ElectroSphere 2K26",
@@ -21,7 +21,7 @@ const certificates = [
     badge: "🥈 2nd Place",
     badgeColor: "#f59e0b",
     desc: "Secured 2nd Place in the Software Edition as Team InnovateX, organized by TechX DM Club under Faculty of Engineering.",
-    image: "/certificates/electrosphere.jpg",
+    image: "/certificates/electrosphere.jpeg",
   },
 ];
 

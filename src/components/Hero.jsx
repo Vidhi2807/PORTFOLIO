@@ -14,7 +14,8 @@ export default function Hero() {
             opacity: [0.1, 0.15, 0.1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px]"
+          style={{ background: "#6366f140" }}
         />
         <motion.div
           animate={{
@@ -23,7 +24,8 @@ export default function Hero() {
             opacity: [0.1, 0.15, 0.1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px]"
+          style={{ background: "#f43f5e30" }}
         />
       </div>
 

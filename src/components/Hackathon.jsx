@@ -16,7 +16,7 @@ const hackathons = [
     achievements: ["Finalist 🏆", "Cleared 3 Evaluation Rounds", "Final Presentation Stage"],
     teammates: ["Dhvanit Kanabar", "Harshit Pandya", "Devanshi Vadiya"],
     link: "https://cers-plus.web.app/",
-    color: "from-amber-500 to-orange-500",
+    color: "#f59e0b",  // amber — SU2026
   },
   {
     title: "Craftathon",
@@ -31,7 +31,7 @@ const hackathons = [
     achievements: ["Top 10 🏆", "9th / 134 Teams", "Cleared Multiple Evaluation Rounds"],
     teammates: ["Dhvanit Kanabar", "Rishikesh Singh", "Kamlesh Chandela"],
     link: "https://fasalrakshak.vercel.app",
-    color: "from-green-500 to-emerald-500",
+    color: "#10b981",  // emerald — Craftathon
   },
   {
     title: "ElectroSphere 2K26",
@@ -45,7 +45,7 @@ const hackathons = [
     achievements: ["2nd Place — Software Edition 🥈", "TechX Club, Swaminarayan University"],
     teammates: ["Chitt Hirapara", "Rachit Kakkad", "Vineet Prajapati"],
     link: "https://aura-eight-phi.vercel.app/",
-    color: "from-blue-500 to-indigo-500",
+    color: "#6366f1",  // indigo — ElectroSphere
   },
 ];
 
@@ -87,7 +87,7 @@ export default function Hackathon() {
               <div className="glass p-8 rounded-[2.5rem] border-white/5 h-full transition-all duration-500 hover:border-primary/30 hover:shadow-2xl">
                 
                 <div className="flex items-center justify-between mb-8">
-                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${hack.color} text-white shadow-lg`}>
+                  <div className="p-4 rounded-2xl text-white shadow-lg" style={{ background: hack.color }}>
                     <Trophy size={24} />
                   </div>
                   <div className="flex flex-col items-end gap-1">
@@ -124,11 +124,11 @@ export default function Hackathon() {
                     <p className="text-sm text-foreground/60 leading-relaxed">{hack.problem}</p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase text-emerald-500 tracking-widest mb-1 block">Solution</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest mb-1 block" style={{ color: "#10b981" }}>Solution</span>
                     <p className="text-sm text-foreground/60 leading-relaxed">{hack.solution}</p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase text-amber-500 tracking-widest mb-1 block">Outcome</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest mb-1 block" style={{ color: "#f59e0b" }}>Outcome</span>
                     <p className="text-sm text-foreground/60 leading-relaxed font-bold">{hack.outcome}</p>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export default function Hackathon() {
                 <div className="space-y-2">
                   {hack.achievements.map((ach, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-[10px] font-bold text-primary/80 uppercase tracking-wider">
-                      <Target size={14} className="text-amber-500" />
+                      <Target size={14} style={{ color: "#f59e0b" }} />
                       {ach}
                     </div>
                   ))}

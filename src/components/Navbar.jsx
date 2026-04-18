@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Github, Linkedin, Mail, Youtube, Twitter, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Education", href: "#education" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Certificates", href: "#certificates" },
-  { name: "Hackathons", href: "#hackathons" },
-  { name: "Figma", href: "#figma" },
-  { name: "Contact", href: "#contact" },
+  { name: "About",        to: "/about" },
+  { name: "Education",    to: "/education" },
+  { name: "Skills",       to: "/skills" },
+  { name: "Projects",     to: "/projects" },
+  { name: "Certificates", to: "/certificates" },
+  { name: "Hackathons",   to: "/hackathons" },
+  { name: "Figma",        to: "/figma" },
+  { name: "Contact",      to: "/contact" },
 ];
 
 export default function Navbar() {
@@ -35,28 +36,26 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto px-12 flex justify-between items-center">
-        <motion.a
-          href="#"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-bold gradient-text"
-        >
+        <Link to="/" className="text-2xl font-bold gradient-text">
           VM
-        </motion.a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link, i) => (
-            <motion.a
+            <motion.div
               key={link.name}
-              href={link.href}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
             >
-              {link.name}
-            </motion.a>
+              <Link
+                to={link.to}
+                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+              >
+                {link.name}
+              </Link>
+            </motion.div>
           ))}
           <div className="ml-4">
             <ThemeToggle />
@@ -85,14 +84,14 @@ export default function Navbar() {
           >
             <div className="flex flex-col p-6 space-y-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.to}
                   onClick={() => setIsOpen(false)}
                   className="text-lg font-medium text-foreground/70 hover:text-primary transition-colors"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <div className="pt-4 border-t border-border/50 flex justify-center">
                 <ThemeToggle />
