@@ -25,16 +25,18 @@ export default function About() {
              I'm a 1st-year Computer Engineering student who loves exploring the world of web development. I enjoy building frontend experiences using React.js, HTML, and CSS, and I also have knowledge of Node.js, Java, C, and C++. I’ve participated in hackathons, worked on a cybersecurity project, and continuously improve my problem-solving skills through LeetCode. I’m curious by nature and always excited to learn new things and create technology that actually matters.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
               {[
-                { icon: <Code2 style={{ color: "#6366f1" }} />, title: "Strategy", desc: "Digital roadmap" },
-                { icon: <Palette style={{ color: "#10b981" }} />, title: "Design", desc: "User-centric UI" },
-                { icon: <Sparkles style={{ color: "#f59e0b" }} />, title: "Quality", desc: "Clean codebase" },
+                { icon: <Code2 className="w-4 h-4 sm:w-6 sm:h-6" style={{ color: "#6366f1" }} />, title: "Strategy", desc: "Digital roadmap" },
+                { icon: <Palette className="w-4 h-4 sm:w-6 sm:h-6" style={{ color: "#10b981" }} />, title: "Design", desc: "User-centric UI" },
+                { icon: <Sparkles className="w-4 h-4 sm:w-6 sm:h-6" style={{ color: "#f59e0b" }} />, title: "Quality", desc: "Clean codebase" },
               ].map((item, i) => (
-                <div key={i} className="glass p-5 rounded-2xl border-white/5 hover:bg-white/5 transition-all">
-                  <div className="mb-4 bg-white/5 w-fit p-3 rounded-xl">{item.icon}</div>
-                  <h3 className="font-bold text-base mb-1">{item.title}</h3>
-                  <p className="text-xs text-foreground/40">{item.desc}</p>
+                <div key={i} className="glass p-3 sm:p-5 rounded-[1rem] sm:rounded-2xl border-white/5 hover:bg-white/5 transition-all flex flex-col items-center text-center sm:items-start sm:text-left">
+                  <div className="mb-2 sm:mb-4 bg-white/5 w-fit p-2 sm:p-3 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-[10px] sm:text-base mb-1">{item.title}</h3>
+                  <p className="text-[8px] sm:text-xs text-foreground/40 leading-tight">{item.desc}</p>
                 </div>
               ))}
             </div>
