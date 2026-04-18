@@ -4,38 +4,46 @@ import { Trophy, Calendar, Users, Target, ExternalLink, Sparkles } from "lucide-
 
 const hackathons = [
   {
-    title: "Smart India Hackathon 2024",
-    role: "Lead Developer",
-    date: "Dec 2024",
-    problem: "Inefficient resource allocation during natural disasters leading to delayed response times.",
-    solution: "Developed an AI-driven platform that uses real-time data to predict resource needs and automate dispatch logistics.",
-    outcome: "Reduced simulated response time by 40% and won the 'Innovation Excellence' award.",
-    tech: ["React", "TensorFlow", "Node.js"],
-    achievements: ["Grand Finalist", "Top 5 in India"],
-    link: "#",
+    title: "SU2026",
+    role: "Full Stack Developer (MERN)",
+    team: "Team CodePulse",
+    date: "Mar 14–15, 2026",
+    duration: "36 hrs",
+    problem: "Delays in emergency response due to lack of coordination between hospitals, police, and fire departments, causing critical loss of time.",
+    solution: "Built CERS — a Centralized Emergency Response System with real-time location tracking, one-click distress signals, and a unified network for all emergency services using MERN stack.",
+    outcome: "🏆 Selected as Finalist after clearing 3 rigorous evaluation rounds and a final presentation among many talented teams.",
+    tech: ["React", "Node.js", "MongoDB", "Express", "Firebase", "Maps API"],
+    achievements: ["Finalist 🏆", "Cleared 3 Evaluation Rounds", "Final Presentation Stage"],
+    teammates: ["Dhvanit Kanabar", "Harshit Pandya", "Devanshi Vadiya"],
+    link: "https://cers-plus.web.app/",
     color: "from-amber-500 to-orange-500",
   },
   {
-    title: "iFest 2024 - Cybersecurity",
-    role: "Security Analyst",
-    date: "Oct 2024",
-    problem: "Lack of interactive tools to teach complex cyberattack vectors to beginners.",
-    solution: "Built a gamified 'Hackers Panel' where users can safely execute and defend against simulated MITM and XSS attacks.",
-    outcome: "Secured 1st place in the Technical Execution category and adopted as a teaching tool by the university club.",
-    tech: ["JavaScript", "Python", "Docker"],
-    achievements: ["Winner - Best Technical Execution"],
-    link: "https://github.com/Vidhi2807/cybersecurity-prj",
-    color: "from-emerald-500 to-teal-500",
+    title: "Craftathon",
+    role: "UI/UX Designer & Developer",
+    team: "Team Fasal Rakshak",
+    date: "Apr 3–4, 2025",
+    duration: "36 hrs",
+    problem: "Farmers receive complex soil reports (N, P, K, pH, micronutrients) that are hard to interpret, leading to poor crop selection and inefficient fertilizer usage.",
+    solution: "Built Fasal Rakshak — an AgriTech platform providing smart crop recommendations, fertilizer guidance, soil health analysis with deficiency detection, and multi-input support (manual, PDF, image OCR) in a farmer-friendly interface.",
+    outcome: "🏆 Ranked 9th out of 134 teams. Cleared multiple rounds to reach Top 25, then Top 10 in the final standings.",
+    tech: ["React", "Firebase", "AI/ML", "OCR", "Leaflet"],
+    achievements: ["Top 10 🏆", "9th / 134 Teams", "Cleared Multiple Evaluation Rounds"],
+    teammates: ["Dhvanit Kanabar", "Rishikesh Singh", "Kamlesh Chandela"],
+    link: "https://fasalrakshak.vercel.app",
+    color: "from-green-500 to-emerald-500",
   },
   {
-    title: "Global AI Hackathon",
-    role: "AI/ML Engineer",
-    date: "Aug 2024",
-    problem: "High cognitive load in managing multi-platform digital workflows.",
-    solution: "Created 'Aura', an LLM-powered context-aware assistant that automates task categorization and scheduling.",
-    outcome: "Recognized among the Top 10 global entries for 'Human-Centric AI Design'.",
-    tech: ["PyTorch", "OpenAI", "React"],
-    achievements: ["Special Mention for UX", "Global Top 10"],
+    title: "ElectroSphere 2K26",
+    role: "Full Stack Developer",
+    team: "Team InnovateX",
+    date: "Jan 2026",
+    problem: "Security tools often glorify exploitation. There was a gap for an ethical, explainable platform that teaches security through structured risk reasoning rather than live attacks.",
+    solution: "Built ThreatLens — a static cybersecurity analysis & threat-modeling platform that analyzes system architectures to identify risks, attack surfaces, and trust boundaries with clear, academically defensible explanations. No payloads. No weaponization.",
+    outcome: "🥈 Secured 2nd Place in Software Edition at ElectroSphere DM 2K26 organized by TechX Club, Swaminarayan University.",
+    tech: ["React", "Firebase", "Node.js", "Security Modeling"],
+    achievements: ["2nd Place — Software Edition 🥈", "TechX Club, Swaminarayan University"],
+    teammates: ["Chitt Hirapara", "Rachit Kakkad", "Vineet Prajapati"],
     link: "https://aura-eight-phi.vercel.app/",
     color: "from-blue-500 to-indigo-500",
   },
@@ -82,15 +90,32 @@ export default function Hackathon() {
                   <div className={`p-4 rounded-2xl bg-gradient-to-br ${hack.color} text-white shadow-lg`}>
                     <Trophy size={24} />
                   </div>
-                  <div className="text-xs font-bold text-foreground/40 uppercase tracking-widest flex items-center gap-2">
-                    <Calendar size={14} /> {hack.date}
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="text-xs font-bold text-foreground/40 uppercase tracking-widest flex items-center gap-2">
+                      <Calendar size={14} /> {hack.date}
+                    </div>
+                    {hack.duration && (
+                      <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                        ⏱ {hack.duration}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 <h3 className="text-2xl font-black mb-2 group-hover:text-primary transition-colors">{hack.title}</h3>
-                <div className="flex items-center gap-2 text-primary font-bold text-xs mb-8 uppercase tracking-widest opacity-60">
+                <div className="flex items-center gap-2 text-primary font-bold text-xs mb-1 uppercase tracking-widest opacity-60">
                   <Users size={16} /> {hack.role}
                 </div>
+                {hack.team && (
+                  <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mb-4">
+                    {hack.team}
+                    {hack.teammates?.length > 0 && (
+                      <span className="normal-case ml-2 text-foreground/20 font-normal">
+                        · {hack.teammates.join(", ")}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {/* Detailed Narrative */}
                 <div className="space-y-6 mb-8">
