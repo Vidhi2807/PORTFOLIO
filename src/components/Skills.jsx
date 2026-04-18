@@ -1,100 +1,96 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Code,
-  Database,
-  Layout,
-  Settings,
-  Palette,
-  Terminal,
-  Zap,
+  Code, Database, Layout, Settings, Palette, Terminal, Zap,
+  Globe, GitMerge, Layers, Search, MousePointer, BarChart2,
 } from "lucide-react";
 
 /* ─── 4-color palette from Education ──────────────────── */
-const C1 = "#6366f1"; // indigo
-const C2 = "#f43f5e"; // rose
-const C3 = "#10b981"; // emerald
-const C4 = "#f59e0b"; // amber
+const C1 = "#6366f1";
+const C2 = "#f43f5e";
+const C3 = "#10b981";
+const C4 = "#f59e0b";
 
+/* ─── Tech Icon Map (Devicons CDN) ────────────────────── */
+const ICON_MAP = {
+  "React.js":        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Next.js":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  "TypeScript":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "JavaScript":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "Tailwind CSS":    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  "HTML5":           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "CSS3":            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "Node.js":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  "Express.js":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  "Firebase":        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  "MongoDB":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  "PostgreSQL":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  "Python":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "Figma":           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+  "Git":             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  "GitHub":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  "Docker":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "Vite":            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg",
+  "Vercel":          "https://cdn.simpleicons.org/vercel/ffffff",
+  "Netlify":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg",
+  "C / C++":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+  "Java":            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  "SQL":             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "Bash":            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+};
+
+const FALLBACK_ICON = {
+  "Framer Motion":     <Layers size={28} />,
+  "REST APIs":         <Globe size={28} />,
+  "Wireframing":       <MousePointer size={28} />,
+  "Prototyping":       <GitMerge size={28} />,
+  "Design Systems":    <Layers size={28} />,
+  "Responsive Design": <Code size={28} />,
+  "User Research":     <Search size={28} />,
+  "CI/CD":             <BarChart2 size={28} />,
+};
+
+/* ─── Categories ───────────────────────────────────────── */
 const CATEGORIES = [
   {
     id: "frontend",
     title: "Frontend",
     icon: Layout,
     color: C1,
-    skills: [
-      { name: "React.js",       level: 95 },
-      { name: "Next.js",        level: 88 },
-      { name: "TypeScript",     level: 80 },
-      { name: "JavaScript",     level: 95 },
-      { name: "Tailwind CSS",   level: 92 },
-      { name: "Framer Motion",  level: 85 },
-      { name: "HTML5",          level: 98 },
-      { name: "CSS3",           level: 95 },
-    ],
+    skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3"],
   },
   {
     id: "backend",
     title: "Backend",
     icon: Database,
     color: C2,
-    skills: [
-      { name: "Node.js",    level: 85 },
-      { name: "Express.js", level: 82 },
-      { name: "Firebase",   level: 80 },
-      { name: "MongoDB",    level: 78 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "REST APIs",  level: 90 },
-      { name: "Python",     level: 75 },
-    ],
+    skills: ["Node.js", "Express.js", "Firebase", "MongoDB", "PostgreSQL", "REST APIs", "Python"],
   },
   {
     id: "uiux",
     title: "UI / UX",
     icon: Palette,
     color: C3,
-    skills: [
-      { name: "Figma",             level: 90 },
-      { name: "Wireframing",       level: 88 },
-      { name: "Prototyping",       level: 85 },
-      { name: "Design Systems",    level: 82 },
-      { name: "Responsive Design", level: 95 },
-      { name: "User Research",     level: 78 },
-    ],
+    skills: ["Figma", "Wireframing", "Prototyping", "Design Systems", "Responsive Design", "User Research"],
   },
   {
     id: "devops",
     title: "DevOps",
     icon: Settings,
     color: C4,
-    skills: [
-      { name: "Git",     level: 92 },
-      { name: "GitHub",  level: 95 },
-      { name: "Docker",  level: 65 },
-      { name: "Vite",    level: 88 },
-      { name: "Vercel",  level: 90 },
-      { name: "Netlify", level: 85 },
-      { name: "CI/CD",   level: 70 },
-    ],
+    skills: ["Git", "GitHub", "Docker", "Vite", "Vercel", "Netlify", "CI/CD"],
   },
   {
     id: "languages",
     title: "Languages",
     icon: Code,
     color: C1,
-    skills: [
-      { name: "C / C++",    level: 80 },
-      { name: "Python",     level: 82 },
-      { name: "JavaScript", level: 95 },
-      { name: "Java",       level: 72 },
-      { name: "SQL",        level: 78 },
-      { name: "Bash",       level: 60 },
-    ],
+    skills: ["C / C++", "Python", "JavaScript", "Java", "SQL", "Bash"],
   },
 ];
 
 /* ─── Typewriter ───────────────────────────────────────── */
-function Typewriter({ text, speed = 55 }) {
+function Typewriter({ text, speed = 45 }) {
   const [displayed, setDisplayed] = useState("");
   useEffect(() => {
     setDisplayed("");
@@ -114,67 +110,49 @@ function Typewriter({ text, speed = 55 }) {
   );
 }
 
-/* ─── Skill Bubble ─────────────────────────────────────── */
-function SkillBubble({ skill, color, index }) {
-  const [filled, setFilled] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setFilled(true), index * 60 + 200);
-    return () => clearTimeout(t);
-  }, [index]);
+/* ─── Icon Tile ─────────────────────────────────────────── */
+function IconTile({ name, color }) {
+  const src = ICON_MAP[name];
+  const fallback = FALLBACK_ICON[name];
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.6, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.5, y: -10 }}
-      transition={{ delay: index * 0.04, type: "spring", stiffness: 300, damping: 20 }}
-      whileHover={{ scale: 1.04, y: -4 }}
-      className="relative rounded-2xl p-4 cursor-default overflow-hidden"
+      whileHover={{ scale: 1.18, y: -6 }}
+      transition={{ type: "spring", stiffness: 400, damping: 22 }}
+      title={name}
+      className="relative flex items-center justify-center rounded-2xl cursor-default overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, ${color}12 0%, ${color}06 100%)`,
+        aspectRatio: "1 / 1",
+        background: `linear-gradient(135deg, ${color}14 0%, ${color}06 100%)`,
         border: `1px solid ${color}30`,
       }}
     >
-      {/* Corner glow */}
+      {/* Corner glow blob */}
       <div
-        className="absolute -top-4 -right-4 w-12 h-12 rounded-full blur-xl opacity-40 pointer-events-none"
+        className="absolute -top-3 -right-3 w-10 h-10 rounded-full blur-xl opacity-30 pointer-events-none"
         style={{ background: color }}
       />
 
-      {/* Skill name + % */}
-      <div className="flex items-center justify-between mb-3 relative z-10">
-        <span className="text-sm font-bold tracking-tight" style={{ color }}>
-          {skill.name}
-        </span>
-        <span
-          className="text-[10px] font-black px-2 py-0.5 rounded-full"
-          style={{ background: `${color}22`, color }}
-        >
-          {skill.level}%
-        </span>
-      </div>
-
-      {/* Progress bar */}
-      <div
-        className="relative z-10 h-1.5 rounded-full overflow-hidden"
-        style={{ background: `${color}18` }}
-      >
-        <motion.div
-          className="h-full rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: filled ? `${skill.level}%` : 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: index * 0.06 }}
-          style={{
-            background: `linear-gradient(90deg, ${color}88, ${color})`,
-            boxShadow: `0 0 8px ${color}80`,
-          }}
+      {/* Icon */}
+      {src ? (
+        <img
+          src={src}
+          alt={name}
+          title={name}
+          className="w-10 h-10 object-contain drop-shadow-sm relative z-10"
+          loading="lazy"
+          onError={(e) => { e.target.style.display = "none"; }}
         />
-      </div>
+      ) : (
+        <span className="relative z-10" style={{ color }}>
+          {fallback ?? <Code size={28} />}
+        </span>
+      )}
     </motion.div>
   );
 }
 
-/* ─── Category Tab (hover-triggered) ──────────────────── */
+/* ─── Category Tab ─────────────────────────────────────── */
 function CategoryTab({ cat, isActive, onHover }) {
   const Icon = cat.icon;
   return (
@@ -182,7 +160,7 @@ function CategoryTab({ cat, isActive, onHover }) {
       onMouseEnter={onHover}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.96 }}
-      className="relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 outline-none"
+      className="relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-150 outline-none"
       style={{
         color: isActive ? cat.color : "hsl(var(--muted-foreground))",
         background: isActive ? `${cat.color}14` : "transparent",
@@ -191,12 +169,12 @@ function CategoryTab({ cat, isActive, onHover }) {
     >
       <Icon size={15} />
       <span className="hidden sm:inline">{cat.title}</span>
-
       {isActive && (
         <motion.span
           layoutId="tab-underline"
           className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full"
           style={{ background: cat.color }}
+          transition={{ duration: 0.15 }}
         />
       )}
     </motion.button>
@@ -208,15 +186,15 @@ function FloatingOrb({ color }) {
   return (
     <motion.div
       className="absolute rounded-full blur-3xl pointer-events-none"
+      animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.9, 0.5] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       style={{
-        width: 340,
-        height: 340,
-        background: `radial-gradient(circle, ${color}18, transparent 70%)`,
-        top: "10%",
+        width: 320,
+        height: 320,
+        background: `radial-gradient(circle, ${color}20, transparent 70%)`,
+        top: "5%",
         right: "-5%",
       }}
-      animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
     />
   );
 }
@@ -228,7 +206,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative py-28 px-6 overflow-hidden">
-      {/* Ambient background */}
+      {/* Ambient bg */}
       <div
         className="absolute inset-0 pointer-events-none opacity-30"
         style={{
@@ -249,10 +227,7 @@ export default function Skills() {
             style={{ background: `${C1}15`, border: `1px solid ${C1}30` }}
           >
             <Terminal size={11} style={{ color: C1 }} />
-            <span
-              className="text-[10px] font-black uppercase tracking-[0.2em]"
-              style={{ color: C1 }}
-            >
+            <span className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: C1 }}>
               My Expertise
             </span>
           </motion.div>
@@ -274,7 +249,7 @@ export default function Skills() {
             transition={{ delay: 0.2 }}
             className="mt-3 text-sm text-muted-foreground max-w-md"
           >
-            Hover a category to explore the skills within it.
+            Hover a category to explore the tools I work with.
           </motion.p>
         </div>
 
@@ -293,7 +268,7 @@ export default function Skills() {
         >
           <FloatingOrb color={activeCat.color} />
 
-          {/* ── Tabs row ── */}
+          {/* Tabs */}
           <div
             className="relative z-10 flex flex-wrap gap-1 p-4 border-b"
             style={{ borderColor: "hsl(var(--foreground)/0.06)" }}
@@ -307,7 +282,7 @@ export default function Skills() {
               />
             ))}
 
-            {/* Terminal prompt */}
+            {/* Terminal label */}
             <div
               className="ml-auto hidden md:flex items-center gap-2 px-3 text-[10px] font-mono"
               style={{ color: "hsl(var(--muted-foreground)/0.5)" }}
@@ -317,61 +292,35 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* ── Skills grid ── */}
-          <div className="relative z-10 p-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeId}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"
-              >
-                {activeCat.skills.map((skill, i) => (
-                  <SkillBubble
-                    key={skill.name}
-                    skill={skill}
-                    color={activeCat.color}
-                    index={i}
-                  />
-                ))}
-              </motion.div>
-            </AnimatePresence>
+          {/* Icon Grid — renders instantly on hover, no animation */}
+          <div className="relative z-10 p-8">
+            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-4">
+              {activeCat.skills.map((name) => (
+                <IconTile
+                  key={name}
+                  name={name}
+                  color={activeCat.color}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* ── Footer stat bar ── */}
+          {/* Footer stat */}
           <div
-            className="relative z-10 flex items-center gap-6 px-6 py-4 border-t"
+            className="relative z-10 flex items-center gap-4 px-6 py-4 border-t"
             style={{ borderColor: "hsl(var(--foreground)/0.05)" }}
           >
-            <div className="flex items-center gap-2">
-              <div
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ background: activeCat.color }}
-              />
-              <span className="text-xs font-semibold" style={{ color: activeCat.color }}>
-                {activeCat.title}
-              </span>
-            </div>
-            <span className="text-xs text-muted-foreground">
-              {activeCat.skills.length} skills
+            <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: activeCat.color }} />
+            <span className="text-xs font-semibold" style={{ color: activeCat.color }}>
+              {activeCat.title}
             </span>
-            <span className="text-xs text-muted-foreground ml-auto">
-              avg{" "}
-              <strong style={{ color: activeCat.color }}>
-                {Math.round(
-                  activeCat.skills.reduce((s, sk) => s + sk.level, 0) /
-                    activeCat.skills.length
-                )}
-                %
-              </strong>{" "}
-              proficiency
+            <span className="text-xs text-muted-foreground">
+              {activeCat.skills.length} tools
             </span>
           </div>
         </motion.div>
 
-        {/* ── Bottom mini-legend ── */}
+        {/* Bottom pill nav */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -385,18 +334,11 @@ export default function Skills() {
               <button
                 key={cat.id}
                 onMouseEnter={() => setActiveId(cat.id)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold transition-all duration-200"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold transition-all duration-150"
                 style={{
                   background: activeId === cat.id ? `${cat.color}20` : "transparent",
-                  color:
-                    activeId === cat.id
-                      ? cat.color
-                      : "hsl(var(--muted-foreground))",
-                  border: `1px solid ${
-                    activeId === cat.id
-                      ? cat.color + "40"
-                      : "hsl(var(--foreground)/0.08)"
-                  }`,
+                  color: activeId === cat.id ? cat.color : "hsl(var(--muted-foreground))",
+                  border: `1px solid ${activeId === cat.id ? cat.color + "40" : "hsl(var(--foreground)/0.08)"}`,
                 }}
               >
                 <Icon size={11} />
