@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import ScrambleWord from "./ScrambleWord";
 import {
   Code, Database, Layout, Settings, Palette, Terminal, Zap,
   Globe, GitMerge, Layers, Search, MousePointer, BarChart2,
@@ -89,7 +90,7 @@ const CATEGORIES = [
   },
 ];
 
-/* ─── Typewriter ───────────────────────────────────────── */
+/* ─── Typewriter ────────────────────────────────────────────── */
 function Typewriter({ text, speed = 45 }) {
   const [displayed, setDisplayed] = useState("");
   useEffect(() => {
@@ -205,7 +206,7 @@ export default function Skills() {
   const activeCat = CATEGORIES.find((c) => c.id === activeId);
 
   return (
-    <section id="skills" className="relative py-28 px-6 overflow-hidden">
+    <section id="skills" className="relative py-16 px-6 overflow-hidden">
       {/* Ambient bg */}
       <div
         className="absolute inset-0 pointer-events-none opacity-30"
@@ -232,15 +233,11 @@ export default function Skills() {
             </span>
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.12 }}
-            className="text-4xl md:text-5xl font-black tracking-tight"
-          >
-            Technical <span className="gradient-text">Proficiency</span>
-          </motion.h2>
+          {/* Scramble-decode heading — fires on scroll */}
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight select-none">
+            <ScrambleWord text="Technical " delay={0} />
+            <ScrambleWord text="Proficiency" className="gradient-text" delay={300} />
+          </h2>
 
           <motion.p
             initial={{ opacity: 0, y: 8 }}

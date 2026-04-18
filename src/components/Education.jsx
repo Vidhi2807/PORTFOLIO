@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GraduationCap, BookOpen, Code2, Globe, Cpu, ChevronDown, MapPin, Calendar } from "lucide-react";
+import ScrambleWord from "./ScrambleWord";
 
 const entries = [
   {
@@ -207,15 +208,10 @@ export default function Education() {
             Education Path
           </motion.span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-black tracking-tight"
-            >
-              My Academic <span className="gradient-text">Journey</span>
-            </motion.h2>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+              <ScrambleWord text="My Academic " delay={0} />
+              <ScrambleWord text="Journey" className="gradient-text" delay={350} />
+            </h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

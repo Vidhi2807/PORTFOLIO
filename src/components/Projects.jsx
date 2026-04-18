@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import ScrambleWord from "./ScrambleWord";
 import { ExternalLink, Github, FileText, ArrowUpRight, ShieldCheck, Sparkles, Activity, Lock, Globe, Code2, Cpu, Sprout, Database, Youtube } from "lucide-react";
 
 /* ─── 4 Education palette colors ───────────────────────── */
-const C1 = "#6366f1"; // indigo
-const C2 = "#f43f5e"; // rose
-const C3 = "#10b981"; // emerald
-const C4 = "#f59e0b"; // amber
+const C1 = "#6366f1";
+const C2 = "#f43f5e";
+const C3 = "#10b981";
+const C4 = "#f59e0b";
 
 const projects = [
   {
@@ -99,7 +100,7 @@ export default function Projects() {
     : projects.filter(p => p.category === filter);
 
   return (
-    <section id="projects" className="py-32 px-6 relative overflow-hidden bg-background">
+    <section id="projects" className="py-16 px-6 relative overflow-hidden bg-background">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] -z-10 translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] -z-10 -translate-x-1/3 translate-y-1/3" />
@@ -116,15 +117,12 @@ export default function Projects() {
             <Sparkles size={12} className="animate-pulse" />
             Project Showcase
           </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black mb-4 tracking-tight leading-[0.85] text-foreground"
-          >
-            Pushing <span className="gradient-text">Technological</span> Boundaries
-          </motion.h2>
+          {/* Scramble-decode heading — fires on scroll */}
+          <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tight leading-[0.9] select-none">
+            <ScrambleWord text="Pushing " delay={0} />
+            <ScrambleWord text="Technological" className="gradient-text" delay={250} />
+            <ScrambleWord text=" Boundaries" delay={500} />
+          </h2>
 
           {/* Category Filter */}
           <div className="flex flex-wrap gap-4 mt-8">

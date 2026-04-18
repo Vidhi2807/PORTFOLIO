@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Trophy, Calendar, Users, Target, ExternalLink, Sparkles } from "lucide-react";
+import ScrambleWord from "./ScrambleWord";
 
 const hackathons = [
   {
@@ -63,15 +64,10 @@ export default function Hackathon() {
             <Sparkles size={14} className="text-primary" />
             Competitive Coding
           </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black mb-6 tracking-tight"
-          >
-            Hackathon <span className="gradient-text">Experiences</span>
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">
+            <ScrambleWord text="Hackathon " delay={0} />
+            <ScrambleWord text="Experiences" className="gradient-text" delay={350} />
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

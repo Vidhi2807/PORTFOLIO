@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Code2, Palette, Sparkles } from "lucide-react";
+import ScrambleWord from "./ScrambleWord";
 
 export default function About() {
   return (
@@ -15,16 +16,10 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">About Me</span>
-            <motion.h2 
-              className="text-4xl md:text-5xl font-black mb-8 tracking-tight cursor-default inline-block"
-              whileHover={{ 
-                rotateX: 360,
-                color: "#6366f1"
-              }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            >
-              Passionate Web Developer and   <span className="gradient-text">Designer</span>
-            </motion.h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-tight">
+              <ScrambleWord text="Passionate Web Developer and " delay={0} />
+              <ScrambleWord text="Designer" className="gradient-text" delay={400} />
+            </h2>
             
             <p className="text-lg text-foreground/60 mb-10 leading-relaxed">
              I'm a 1st-year Computer Engineering student who loves exploring the world of web development. I enjoy building frontend experiences using React.js, HTML, and CSS, and I also have knowledge of Node.js, Java, C, and C++. I’ve participated in hackathons, worked on a cybersecurity project, and continuously improve my problem-solving skills through LeetCode. I’m curious by nature and always excited to learn new things and create technology that actually matters.

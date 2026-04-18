@@ -1,5 +1,6 @@
 import React from "react";
 import { Github, Linkedin, Mail, Twitter, Youtube, Code2 } from "lucide-react";
+import logo from "../assets/me.jpg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,7 +9,16 @@ export default function Footer() {
     <footer className="py-12 px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
-          <a href="#" className="text-2xl font-bold gradient-text">VM</a>
+          <a href="#" className="flex items-center group">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-rose-500 blur-[6px] opacity-50 group-hover:opacity-80 transition-opacity" />
+              <img
+                src={logo}
+                alt="Vidhi Mandaliya"
+                className="relative w-10 h-10 rounded-full object-cover border-2 border-white/20 shadow-lg"
+              />
+            </div>
+          </a>
           <p className="text-foreground/40 text-sm max-w-sm text-center md:text-left">
             Built with React, Tailwind CSS, and Framer Motion.
             Designed for performance and aesthetics.

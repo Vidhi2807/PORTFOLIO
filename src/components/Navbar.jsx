@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 import ThemeToggle from "./ThemeToggle";
+import logo from "../assets/me.jpg";
 
 const navLinks = [
   { name: "About",        to: "/about" },
@@ -36,8 +37,15 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto px-12 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold gradient-text">
-          VM
+        <Link to="/" className="flex items-center group">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-rose-500 blur-[6px] opacity-60 group-hover:opacity-90 transition-opacity" />
+            <img
+              src={logo}
+              alt="Vidhi Mandaliya"
+              className="relative w-9 h-9 rounded-full object-cover border-2 border-white/20 shadow-lg"
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}

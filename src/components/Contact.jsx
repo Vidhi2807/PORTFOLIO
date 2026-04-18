@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, MessageSquare, User, AtSign, Github, Linkedin, Youtube, Twitter, Code2 } from "lucide-react";
+import ScrambleWord from "./ScrambleWord";
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
@@ -33,15 +34,10 @@ export default function Contact() {
           >
             Get In Touch
           </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black mb-8 tracking-tight"
-          >
-            Let&apos;s Build Something <span className="gradient-text">Great</span>
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-tight">
+            <ScrambleWord text="Let's Build Something " delay={0} />
+            <ScrambleWord text="Great" className="gradient-text" delay={500} />
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

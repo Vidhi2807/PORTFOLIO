@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Award, Calendar, ExternalLink, ImageOff } from "lucide-react";
+import ScrambleWord from "./ScrambleWord";
 
 const certificates = [
   {
@@ -132,15 +133,10 @@ export default function Certificates() {
           >
             My Certifications
           </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black mb-4 tracking-tight"
-          >
-            Professional <span className="gradient-text">Recognition</span>
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">
+            <ScrambleWord text="Professional " delay={0} />
+            <ScrambleWord text="Recognition" className="gradient-text" delay={350} />
+          </h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

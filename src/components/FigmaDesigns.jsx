@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Figma, ExternalLink, Eye, Layout, Palette, MousePointer2 } from "lucide-react";
+import ScrambleWord from "./ScrambleWord";
 
 const designs = [
   {
@@ -34,19 +35,16 @@ export default function FigmaDesigns() {
             <Palette size={14} />
             Visual Architecture
           </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-black mb-8 tracking-tight"
-          >
-            Figma <span className="gradient-text">Masterpieces</span>
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-tight">
+            <ScrambleWord text="Figma " delay={0} />
+            <ScrambleWord text="Masterpieces" className="gradient-text" delay={280} />
+          </h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-foreground/40 max-w-2xl mx-auto text-sm"
           >
-            Showcasing UI/UX designs where every pixel is purposeful. I bridge 
+            Showcasing UI/UX designs where every pixel is purposeful. I bridge
             the gap between creative vision and technical implementation.
           </motion.p>
         </div>
@@ -62,13 +60,13 @@ export default function FigmaDesigns() {
             >
               {/* Preview Image */}
               <div className="relative h-[300px] overflow-hidden">
-                <img 
-                  src={design.image} 
-                  alt={design.title} 
+                <img
+                  src={design.image}
+                  alt={design.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
-                
+
                 <div className="absolute top-6 left-6 flex gap-2">
                   <span className="px-3 py-1 bg-primary text-white text-[8px] font-black uppercase tracking-widest rounded-lg shadow-xl">
                     {design.category}
@@ -99,8 +97,8 @@ export default function FigmaDesigns() {
                   </div>
                 </div>
                 <p className="text-foreground/50 text-sm leading-relaxed mb-8">{design.desc}</p>
-                
-                <a 
+
+                <a
                   href={design.link}
                   target="_blank"
                   rel="noopener noreferrer"
