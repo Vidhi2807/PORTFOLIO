@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter, Youtube, Code2 } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, Youtube, Code2, Terminal } from "lucide-react";
 import logo from "../assets/me.jpg";
 
 function LogoAvatar({ size = 14 }) {
@@ -42,8 +42,9 @@ export default function Footer() {
               { icon: <Github size={20} />, href: "https://github.com/Vidhi2807", label: "GitHub" },
               { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/vidhi-mandaliya-325240388/", label: "LinkedIn" },
               { icon: <Twitter size={20} />, href: "https://x.com/VidhiM_2810", label: "Twitter" },
-              { icon: <Youtube size={20} />, href: "https://www.youtube.com/shorts/Ni2YHZd58vc", label: "YouTube" },
+              { icon: <Youtube size={20} />, href: "https://www.youtube.com/channel/UCa5HH1eaTgtTcLprpDpmJnw", label: "YouTube" },
               { icon: <Code2 size={20} />, href: "https://leetcode.com/u/VidhiM_2810/", label: "LeetCode" },
+              { icon: <Terminal size={20} />, href: "https://www.sololearn.com/en/profile/35621210", label: "SoloLearn" },
             ].map((social, i) => (
               <a
                 key={i}

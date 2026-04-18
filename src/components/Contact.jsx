@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageSquare, User, AtSign, Github, Linkedin, Youtube, Twitter, Code2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, User, AtSign, Github, Linkedin, Youtube, Twitter, Code2, Terminal } from "lucide-react";
 import ScrambleWord from "./ScrambleWord";
 
 export default function Contact() {
@@ -101,8 +101,9 @@ export default function Contact() {
                   { icon: <Github size={22} />, href: "https://github.com/Vidhi2807", label: "GitHub", color: "hover:text-[#333]" },
                   { icon: <Linkedin size={22} />, href: "https://www.linkedin.com/in/vidhi-mandaliya-325240388/", label: "LinkedIn", color: "hover:text-[#0077b5]" },
                   { icon: <Twitter size={22} />, href: "https://x.com/VidhiM_2810", label: "Twitter", color: "hover:text-[#1da1f2]" },
-                  { icon: <Youtube size={22} />, href: "https://www.youtube.com/shorts/Ni2YHZd58vc", label: "YouTube", color: "hover:text-[#ff0000]" },
+                  { icon: <Youtube size={22} />, href: "https://www.youtube.com/channel/UCa5HH1eaTgtTcLprpDpmJnw", label: "YouTube", color: "hover:text-[#ff0000]" },
                   { icon: <Code2 size={22} />, href: "https://leetcode.com/u/VidhiM_2810/", label: "LeetCode", color: "hover:text-[#ffa116]" },
+                  { icon: <Terminal size={22} />, href: "https://www.sololearn.com/en/profile/35621210", label: "SoloLearn", color: "hover:text-[#4285f4]" },
                 ].map((social, i) => (
                   <motion.a
                     key={i}

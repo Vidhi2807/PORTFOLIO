@@ -111,8 +111,18 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[80vw] max-w-sm bg-background/95 backdrop-blur-3xl border-l border-white/10 z-[60] shadow-2xl flex flex-col md:hidden pt-24"
+              className="fixed top-0 right-0 bottom-0 w-[80vw] max-w-sm bg-background/95 backdrop-blur-3xl border-l border-white/10 z-[60] shadow-2xl flex flex-col md:hidden pt-8"
             >
+              {/* Internal Close Button */}
+              <div className="flex justify-end px-8 mb-8">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 bg-white/5 rounded-full text-foreground/70 hover:text-white transition-colors border border-white/10"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
               <div className="flex flex-col px-8 space-y-6 overflow-y-auto w-full">
                 {navLinks.map((link, i) => (
                   <motion.div

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, Youtube, Twitter, Code2 } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Youtube, Twitter, Code2, Terminal } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -109,7 +109,7 @@ export default function Hero() {
             { icon: <Github size={24} />, href: "https://github.com/Vidhi2807", label: "GitHub" },
             { icon: <Linkedin size={24} />, href: "https://www.linkedin.com/in/vidhi-mandaliya-325240388/", label: "LinkedIn" },
             { icon: <Twitter size={24} />, href: "https://x.com/VidhiM_2810", label: "Twitter" },
-            { icon: <Youtube size={24} />, href: "https://www.youtube.com/shorts/Ni2YHZd58vc", label: "YouTube" },
+            { icon: <Youtube size={24} />, href: "https://www.youtube.com/channel/UCa5HH1eaTgtTcLprpDpmJnw", label: "YouTube" },
             { icon: <Mail size={24} />, href: "mailto:vidhimandaliya81@gmail.com", label: "Email" },
             { icon: <Code2 size={24} />, href: "https://leetcode.com/u/VidhiM_2810/", label: "LeetCode" },
           ].map((item, i) => (
