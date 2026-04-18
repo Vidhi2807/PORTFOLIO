@@ -25,7 +25,7 @@ export default function Footer() {
 
   return (
     <footer className="py-12 px-6 border-t border-white/5">
-      <div className="max-w-6xl mx-auto px-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
           <a href="#" className="flex items-center">
             <LogoAvatar size={14} />

@@ -4,7 +4,7 @@ import { ArrowRight, Github, Linkedin, Mail, Youtube, Twitter, Code2 } from "luc
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen py-24 flex flex-col justify-center items-center text-center px-12 overflow-hidden">
+    <section className="relative min-h-screen py-24 flex flex-col justify-center items-center text-center px-6 md:px-12 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-0">
         <motion.div
@@ -42,7 +42,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          Hi, I&apos;m <br className="hidden md:block" /> 
+          Hi, I&apos;m <br /> 
           <motion.span 
             className="gradient-text whitespace-nowrap inline-block"
             initial={{ opacity: 0, x: -20, filter: "blur(10px)" }}
@@ -76,7 +76,7 @@ export default function Hero() {
           ))}
         </motion.h2>
         
-        <p className="text-lg md:text-xl text-foreground/40 max-w-2xl mx-auto mb-8 leading-relaxed font-medium">
+        <p className="text-base sm:text-lg md:text-xl text-foreground/50 max-w-2xl mx-auto mb-8 leading-relaxed font-medium px-2">
           Transforming complex problems into intuitive digital solutions. Specialized in building high-performance 
           full-stack applications with an eye for premium user experiences.
         </p>
@@ -88,7 +88,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto px-10 py-4 bg-primary text-white rounded-2xl font-black flex items-center justify-center gap-3 shadow-xl shadow-primary/30 hover:shadow-primary/40 transition-all uppercase tracking-wider text-xs"
+            className="w-[80%] sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-black flex items-center justify-center gap-3 shadow-xl shadow-primary/30 hover:shadow-primary/40 transition-all uppercase tracking-wider text-xs"
           >
             View Resume <ArrowRight size={18} />
           </motion.a>
@@ -97,14 +97,14 @@ export default function Hero() {
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto px-10 py-4 glass border-white/10 rounded-2xl font-black hover:bg-white/5 transition-all uppercase tracking-wider text-xs"
+            className="w-[80%] sm:w-auto px-8 py-4 glass border-white/10 rounded-2xl font-black hover:bg-white/5 transition-all uppercase tracking-wider text-xs flex justify-center items-center"
           >
             Get In Touch
           </motion.a>
         </div>
 
         {/* Social Icons */}
-        <div className="flex items-center justify-center gap-6 mt-8">
+        <div className="grid grid-cols-3 sm:flex items-center justify-center gap-4 sm:gap-6 mt-8 mx-auto w-fit">
           {[
             { icon: <Github size={24} />, href: "https://github.com/Vidhi2807", label: "GitHub" },
             { icon: <Linkedin size={24} />, href: "https://www.linkedin.com/in/vidhi-mandaliya-325240388/", label: "LinkedIn" },

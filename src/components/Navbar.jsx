@@ -54,7 +54,7 @@ export default function Navbar() {
         scrolled ? "glass py-4 shadow-xl" : "bg-transparent py-6"
       )}
     >
-      <div className="max-w-6xl mx-auto px-12 flex justify-between items-center">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <LogoAvatar size={12} />
         </Link>

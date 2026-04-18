@@ -24,7 +24,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 px-6 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-12">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}

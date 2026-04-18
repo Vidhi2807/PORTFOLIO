@@ -25,7 +25,7 @@ const designs = [
 export default function FigmaDesigns() {
   return (
     <section id="figma" className="py-24 px-6 bg-white/[0.01]">
-      <div className="max-w-6xl mx-auto px-12">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0 }}

@@ -6,7 +6,7 @@ import ScrambleWord from "./ScrambleWord";
 export default function About() {
   return (
     <section id="about" className="py-24 px-6 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-12">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content (Left) */}
           <motion.div

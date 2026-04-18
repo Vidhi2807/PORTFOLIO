@@ -121,7 +121,7 @@ function CertCard({ cert, i }) {
 export default function Certificates() {
   return (
     <section id="certificates" className="py-24 px-6 bg-white/[0.02]">
-      <div className="max-w-5xl mx-auto px-12">
+      <div className="max-w-5xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">

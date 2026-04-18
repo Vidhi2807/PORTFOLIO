@@ -104,7 +104,7 @@ export default function Projects() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] -z-10 translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] -z-10 -translate-x-1/3 translate-y-1/3" />
 
-      <div className="max-w-6xl mx-auto px-12">
+      <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="mb-16">
           <motion.div

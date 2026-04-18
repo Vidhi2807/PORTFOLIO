@@ -53,7 +53,7 @@ const hackathons = [
 export default function Hackathon() {
   return (
     <section id="hackathons" className="py-24 px-6 relative overflow-hidden bg-background">
-      <div className="max-w-6xl mx-auto px-12">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -70,7 +70,7 @@ export default function Hackathon() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {hackathons.map((hack, i) => (
             <motion.div
               key={i}

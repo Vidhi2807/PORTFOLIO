@@ -82,13 +82,6 @@ function AccordionCard({ entry, isOpen, onToggle, onClose }) {
           className="w-full text-left px-8 py-6 flex items-center justify-between gap-6 group/btn cursor-default"
         >
           <div className="flex items-center gap-5 flex-1 min-w-0">
-            {/* Number */}
-            <span
-              className="text-5xl font-black opacity-15 select-none leading-none shrink-0 transition-opacity duration-300 group-hover/btn:opacity-30"
-              style={{ color: entry.color }}
-            >
-              {entry.num}
-            </span>
 
             {/* Icon */}
             <div
@@ -99,9 +92,9 @@ function AccordionCard({ entry, isOpen, onToggle, onClose }) {
             </div>
 
             {/* Title block */}
-            <div className="min-w-0">
-              <h3 className="text-lg font-black tracking-tight truncate">{entry.degree}</h3>
-              <p className="text-sm font-semibold text-foreground/40 truncate">{entry.institution}</p>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-lg font-black tracking-tight leading-tight">{entry.degree}</h3>
+              <p className="text-sm font-semibold text-foreground/40 mt-1">{entry.institution}</p>
             </div>
           </div>
 
@@ -195,7 +188,7 @@ export default function Education() {
         }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-4xl mx-auto">
 
         {/* Header */}
         <div className="mb-14">
