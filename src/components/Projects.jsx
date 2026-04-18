@@ -55,16 +55,36 @@ const projects = [
     icon: <ShieldCheck style={{ color: C3 }} size={24} />
   },
   {
-    title: "Eco Cart Clone",
+    title: "EBake Clone",
     category: "Clones",
     accentColor: C4,
-    desc: "A high-fidelity clone of a modern e-commerce platform focusing on performance and clean UI transitions.",
-    fullDesc: "Built to demonstrate mastery of complex layouts and state management in a shopping environment.",
-    tech: ["React", "Redux", "Tailwind"],
-    image: "/secure_comm_preview_1775795813773.png",
-    link: "https://github.com/Vidhi2807/Secure-Comm",
-    github: "https://github.com/Vidhi2807/Secure-Comm",
-    docs: "https://github.com/Vidhi2807/Secure-Comm",
+    desc: "A fully responsive, pixel-perfect clone of the EBake platform. Demonstrates advanced UI translation and interactive layout mastery.",
+    tech: ["React", "CSS", "UI/UX"],
+    image: "https://images.unsplash.com/photo-1557308536-ee471ef2c390?q=80&w=2000&auto=format&fit=crop",
+    link: "https://vebake.netlify.app/ebake",
+    github: "https://github.com/Vidhi2807",
+    icon: <Globe style={{ color: C4 }} size={24} />
+  },
+  {
+    title: "Zepto Clone",
+    category: "Clones",
+    accentColor: C4,
+    desc: "A fast, scalable clone of Zepto's UI, focusing on quick-commerce layout grids and smooth mobile-first front-end interactions.",
+    tech: ["React", "Tailwind", "Responsive Design"],
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2000&auto=format&fit=crop",
+    link: "https://vzepto.netlify.app/zepto",
+    github: "https://github.com/Vidhi2807",
+    icon: <Globe style={{ color: C4 }} size={24} />
+  },
+  {
+    title: "Lenskart Clone",
+    category: "Clones",
+    accentColor: C4,
+    desc: "A comprehensive clone of the Lenskart e-commerce storefront. Features dynamic rendering and pixel-perfect component architecture.",
+    tech: ["React", "JavaScript", "CSS"],
+    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=2000&auto=format&fit=crop",
+    link: "https://vlenskart.netlify.app/lenskart",
+    github: "https://github.com/Vidhi2807",
     icon: <Globe style={{ color: C4 }} size={24} />
   },
   {
