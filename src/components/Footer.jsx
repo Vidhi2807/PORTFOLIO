@@ -1,6 +1,24 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Twitter, Youtube, Code2 } from "lucide-react";
 import logo from "../assets/me.jpg";
+
+function LogoAvatar({ size = 14 }) {
+  return (
+    <motion.div
+      className="relative flex-shrink-0"
+      whileHover={{ scale: 1.12 }}
+      transition={{ type: "spring", stiffness: 400, damping: 18 }}
+    >
+      <img
+        src={logo}
+        alt="Vidhi Mandaliya"
+        className="relative rounded-full object-cover shadow-[0_0_15px_rgba(255,255,255,0.1)] border-2 border-white/10"
+        style={{ width: `${size * 4}px`, height: `${size * 4}px` }}
+      />
+    </motion.div>
+  );
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,15 +27,8 @@ export default function Footer() {
     <footer className="py-12 px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
-          <a href="#" className="flex items-center group">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-rose-500 blur-[6px] opacity-50 group-hover:opacity-80 transition-opacity" />
-              <img
-                src={logo}
-                alt="Vidhi Mandaliya"
-                className="relative w-10 h-10 rounded-full object-cover border-2 border-white/20 shadow-lg"
-              />
-            </div>
+          <a href="#" className="flex items-center">
+            <LogoAvatar size={14} />
           </a>
           <p className="text-foreground/40 text-sm max-w-sm text-center md:text-left">
             Built with React, Tailwind CSS, and Framer Motion.

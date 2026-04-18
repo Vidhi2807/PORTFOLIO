@@ -14,7 +14,7 @@ const projects = [
     title: "Aura: AI-Powered Productivity",
     category: "Full Stack",
     accentColor: C1,
-    desc: "An all-in-one productivity ecosystem designed to eliminate 'context switching'. AI-driven task management with a minimalist interface.",
+    desc: "An all-in-one productivity ecosystem designed to eliminate 'app fatigue' through intelligent context switching. Features include an AI-driven task timeline, dynamic integrated note-taking, and a minimalist interface that completely prioritizes user focus.",
     fullDesc: "Aura is a digital brain designed to solve 'App Fatigue.' It integrates notes, tasks, and AI assistance into one cohesive workspace.",
     tech: ["React.js", "Firebase", "Google Gemini API"],
     image: "/aura_app_preview_1775795767021.png",
@@ -23,14 +23,13 @@ const projects = [
     docs: "https://docs.google.com/document/d/1ClnPJun81YwJ5NJFKO_SOxBQeTHGiS8DRThQOmdYLOo/edit?usp=sharing",
     youtube: "https://www.youtube.com/shorts/Ni2YHZd58vc",
     postman: "https://www.postman.com/workspace/aura-api",
-    figma: "https://www.figma.com/file/aura-design",
     icon: <Sparkles style={{ color: C1 }} size={24} />
   },
   {
     title: "CERS: Emergency Response",
     category: "Full Stack",
     accentColor: C2,
-    desc: "Professional-grade Emergency Response System featuring AI dispatch and live satellite tracking.",
+    desc: "A professional-grade Emergency Response System deployed for rapid field coordination. Harnesses live satellite tracking and AI-powered dispatch automation to optimize ambulance routing, actively minimizing critical response delays during complex crisis scenarios.",
     fullDesc: "CERS+ bridges the gap between patients, hospitals, and responders. It leverages Google Maps AI for traffic routing.",
     tech: ["React 19", "Firebase", "Google Maps API"],
     image: "/cers_app_preview_1775795782655.png",
@@ -72,7 +71,7 @@ const projects = [
     title: "FasalRakshak: Smart Agriculture",
     category: "Full Stack",
     accentColor: C3,
-    desc: "AI ecosystem for farmers featuring real-time crop disease diagnosis and expert consultations.",
+    desc: "An intelligent, comprehensive agriculture platform bringing applied AI to farmers. Provides instant, hyper-local weather alerts alongside machine-learning-driven crop disease diagnosis, empowering rural communities with immediate tech assistance.",
     fullDesc: "An intelligent ecosystem for farmers featuring real-time crop disease diagnosis and hyper-local weather tracking.",
     tech: ["React", "Firebase", "AI/ML", "Leaflet"],
     image: "/fasalrakshak_preview_1775797410081.png",
@@ -146,7 +145,7 @@ export default function Projects() {
         {/* Projects Layout */}
         <motion.div 
           layout
-          className="flex flex-wrap justify-center gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, i) => (
@@ -158,56 +157,58 @@ export default function Projects() {
                 viewport={{ once: true }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(50%-2rem)] max-w-3xl"
+                className="w-full"
+                style={{ "--hover-accent": project.accentColor }}
               >
-                <div className="relative group rounded-[2.5rem] overflow-hidden border border-border transition-all duration-500 shadow-lg bg-card hover:shadow-2xl hover:border-primary/30">
+                <div className="relative h-full flex flex-col group rounded-[2rem] overflow-hidden border border-border transition-all duration-500 shadow-lg bg-card hover:shadow-2xl hover:border-primary/30">
                   
-                  <div className="relative h-[260px] overflow-hidden bg-slate-900">
+                  <div className="relative h-[200px] overflow-hidden bg-slate-900 shrink-0">
                     <motion.img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     />
-                    <div className="absolute top-6 left-6 z-20">
-                      <div className="px-4 py-1.5 rounded-xl text-white text-[8px] font-black uppercase tracking-widest shadow-xl" style={{ background: project.accentColor }}>
+                    <div className="absolute top-4 left-4 z-20">
+                      <div className="px-3 py-1 rounded-xl text-white text-[8px] font-black uppercase tracking-widest shadow-xl" style={{ background: project.accentColor }}>
                         {project.category}
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="p-8 space-y-6">
-                    <div>
-                      <h3 className="text-3xl font-black text-foreground tracking-tight mb-3 group-hover:text-primary transition-colors">
-                        {project.title.split(":")[0]}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 font-medium">
-                        {project.desc}
-                      </p>
-                    </div>
 
-                    {/* Action Links */}
-                    <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border/50">
+                    {/* Hover Overlay with Action Icons */}
+                    <div className="absolute inset-0 z-30 flex items-center justify-center gap-3 bg-black/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                        {[
-                         { icon: <Github size={16} />, link: project.github, label: "Code", style: { background: "#6366f120", color: "#6366f1", border: "1px solid #6366f140" } },
-                         { icon: <ExternalLink size={16} />, link: project.link, label: "Live", style: { background: "#6366f1", color: "#fff" } },
-                         { icon: <Youtube size={16} />, link: project.youtube, label: "Demo", style: { background: "#f43f5e15", color: "#f43f5e", border: "1px solid #f43f5e30" } },
-                         { icon: <Database size={16} />, link: project.postman, label: "API Docs", style: { background: "#f59e0b15", color: "#f59e0b", border: "1px solid #f59e0b30" }, show: project.postman },
-                         { icon: <FileText size={16} />, link: project.figma, label: "Figma", style: { background: "#10b98115", color: "#10b981", border: "1px solid #10b98130" }, show: project.figma }
+                         { icon: <Github size={20} />, link: project.github, color: "#171515" },
+                         { icon: <ExternalLink size={20} />, link: project.link, color: "#3b82f6" },
+                         { icon: <Youtube size={20} />, link: project.youtube, color: "#ff0000" },
+                         { icon: <Database size={20} />, link: project.postman, show: project.postman, color: "#eab308" },
+                         { icon: <FileText size={20} />, link: project.figma, show: project.figma, color: "#ec4899" }
                        ].filter(a => a.show !== false && a.link).map((action, idx) => (
                          <motion.a
                            key={idx}
                            href={action.link}
                            target="_blank"
                            rel="noopener noreferrer"
-                           whileHover={{ scale: 1.05, y: -2 }}
+                           whileHover={{ scale: 1.15 }}
                            whileTap={{ scale: 0.95 }}
-                           className="flex items-center gap-2 px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all"
-                           style={action.style}
+                           className="flex items-center justify-center w-11 h-11 rounded-full bg-white shadow-2xl transition-colors hover:text-white"
+                           style={{ color: action.color }}
+                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = action.color; e.currentTarget.style.color = '#fff'; }}
+                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#fff'; e.currentTarget.style.color = action.color; }}
                          >
                            {action.icon}
-                           {action.label}
                          </motion.a>
                        ))}
+                    </div>
+                  </div>
+                  
+                  <div className="p-6 flex flex-col flex-grow space-y-4">
+                    <div className="flex-grow">
+                      <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight mb-2 group-hover:text-[var(--hover-accent)] transition-colors leading-tight">
+                        {project.title.split(":")[0]}
+                      </h3>
+                      <p className="text-muted-foreground text-xs leading-relaxed font-medium">
+                        {project.desc}
+                      </p>
                     </div>
                   </div>
                 </div>

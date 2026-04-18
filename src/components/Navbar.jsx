@@ -6,6 +6,24 @@ import { cn } from "../lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import logo from "../assets/me.jpg";
 
+/* simple logo avatar */
+function LogoAvatar({ size = 12 }) {
+  return (
+    <motion.div
+      className="relative flex-shrink-0"
+      whileHover={{ scale: 1.12 }}
+      transition={{ type: "spring", stiffness: 400, damping: 18 }}
+    >
+      <img
+        src={logo}
+        alt="Vidhi Mandaliya"
+        className="relative rounded-full object-cover shadow-[0_0_15px_rgba(255,255,255,0.1)] border-2 border-white/10"
+        style={{ width: `${size * 4}px`, height: `${size * 4}px` }}
+      />
+    </motion.div>
+  );
+}
+
 const navLinks = [
   { name: "About",        to: "/about" },
   { name: "Education",    to: "/education" },
@@ -37,15 +55,8 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto px-12 flex justify-between items-center">
-        <Link to="/" className="flex items-center group">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-rose-500 blur-[6px] opacity-60 group-hover:opacity-90 transition-opacity" />
-            <img
-              src={logo}
-              alt="Vidhi Mandaliya"
-              className="relative w-9 h-9 rounded-full object-cover border-2 border-white/20 shadow-lg"
-            />
-          </div>
+        <Link to="/" className="flex items-center">
+          <LogoAvatar size={12} />
         </Link>
 
         {/* Desktop Nav */}
