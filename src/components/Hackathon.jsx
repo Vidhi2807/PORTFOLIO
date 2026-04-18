@@ -19,7 +19,7 @@ const hackathons = [
     link: "https://cers-plus.web.app/",
     color: "#f59e0b",  // amber — SU2026
     alignBtn: "items-end",
-    image: "https://images.unsplash.com/photo-1542621334-a254cf47733d?q=80&w=2070&auto=format&fit=crop", // Add your team photo here!
+    image: "/Sangamuni.png", // Copy image 1 here with this name!
   },
   {
     title: "Craftathon",
@@ -36,7 +36,7 @@ const hackathons = [
     link: "https://fasalrakshak.vercel.app",
     color: "#10b981",  // emerald — Craftathon
     alignBtn: "items-end",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop", // Add your team photo here!
+    image: "/Craftathon.png", // Copy image 2 here with this name!
   },
   {
     title: "ElectroSphere 2K26",
@@ -53,7 +53,7 @@ const hackathons = [
     link: "https://aura-eight-phi.vercel.app/",
     color: "#6366f1",  // indigo — ElectroSphere
     alignBtn: "items-start",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=2070&auto=format&fit=crop", // Add your team photo here!
+    image: "/electrosphere.png", // Copy image 3 here with this name!
   },
 ];
 
@@ -91,21 +91,30 @@ export default function Hackathon() {
                 <div className="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(180deg)]">
                   
                   {/* ── FRONT (Image + Basic Info) ── */}
-                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-[2.5rem] border overflow-hidden"
+                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-[2.5rem] border overflow-hidden bg-black/80"
                        style={{ borderColor: `${hack.color}40`, boxShadow: `0 20px 40px ${hack.color}15` }}>
-                     <img src={hack.image} alt={hack.title} className="w-full h-full object-cover transition-transform duration-1000 group-[.group-hover]:scale-110" />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                      
-                     <div className="absolute top-6 left-6 p-4 rounded-2xl text-white shadow-xl backdrop-blur-md" style={{ background: `${hack.color}90` }}>
+                     {/* Gorgeous Blurred Background Layer */}
+                     <img src={hack.image} alt={hack.title} className="absolute inset-0 w-full h-full object-cover scale-125 blur-[30px] opacity-40 mix-blend-screen" />
+                     
+                     {/* Deep Text Gradient (Now safely behind the photo!) */}
+                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
+
+                     {/* Crisp Uniform Foreground Photo */}
+                     <div className="absolute inset-x-0 top-0 h-[60%] p-5 pb-0 flex items-center justify-center z-10 w-full">
+                       <img src={hack.image} alt={hack.title} className="w-full h-full object-cover object-center rounded-2xl shadow-2xl transition-transform duration-1000 group-[.group-hover]:scale-105" />
+                     </div>
+                     
+                     <div className="absolute top-6 left-6 p-3 rounded-2xl text-white shadow-xl backdrop-blur-md z-20" style={{ background: `${hack.color}90` }}>
                         <Trophy size={24} />
                      </div>
-                     <div className="absolute top-6 right-6">
+                     <div className="absolute top-6 right-6 z-20">
                         <div className="px-3 py-1.5 rounded-xl bg-black/60 text-white backdrop-blur-md border border-white/10 text-[9px] font-black uppercase tracking-widest flex items-center gap-2">
                            <Calendar size={12} /> {hack.date}
                         </div>
                      </div>
                      
-                     <div className="absolute bottom-6 left-6 right-6">
+                     <div className="absolute bottom-6 left-6 right-6 z-20">
                         <h3 className="text-2xl md:text-3xl font-black mb-2 text-white leading-tight">{hack.title}</h3>
                         <div className="flex items-center gap-2 font-bold text-[10px] mb-3 uppercase tracking-widest opacity-90" style={{ color: hack.color }}>
                           <Users size={14} /> {hack.role}
