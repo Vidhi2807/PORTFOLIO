@@ -108,3 +108,33 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted/60;
 }
+
+/* Custom Swiper Styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #8b5cf6 !important;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 30px;
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: scale(0.7);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: scale(0.8);
+}
+
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: 0.3 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #8b5cf6 !important;
+  opacity: 1 !important;
+}
