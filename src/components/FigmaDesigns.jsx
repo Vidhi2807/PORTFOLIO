@@ -7,7 +7,7 @@ const designs = [
   {
     title: "StreamVibe OTT UI",
     desc: "A premium, dark-themed OTT streaming platform design template. Features dynamic movie carousels, immersive hero banners, and a polished user experience.",
-    image: "/streamvibe.jpg", // Placeholders to match your designs. Update these paths if you have the local images!
+    image: "/streamvibe.jpg", 
     link: "https://www.figma.com",
     category: "Web App UI",
     stats: { screens: 15, prototype: "Interactive" }
@@ -23,42 +23,26 @@ const designs = [
   {
     title: "EcoConnect Mobile App",
     desc: "A wellness and sustainability tracking app designed for Gen Z. Focused on minimalist aesthetics and intuitive navigation.",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=2070&auto=format&fit=crop",
+    image: "/ecoconnect.jpg",
     link: "https://www.figma.com/community/file/123456789",
     category: "Mobile UI",
     stats: { screens: 24, prototype: "Advanced" }
   },
   {
-    title: "Aura Productivity Dashboard",
-    desc: "The visual language for the Aura platform. Dark mode first, featuring custom glassmorphism components.",
-    image: "https://images.unsplash.com/photo-1613909209432-7b1ef0658bbg?q=80&w=2070&auto=format&fit=crop",
-    link: "https://www.figma.com/community/file/987654321",
-    category: "Web Dashboard",
-    stats: { screens: 12, prototype: "Linked" }
-  },
-  {
-    title: "Quantum Fintech App",
-    desc: "Next-gen banking app interface with 3D elements, real-time data visualization, and secure transaction flows.",
-    image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?q=80&w=2070&auto=format&fit=crop",
+    title: "RedBus Booking UI",
+    desc: "A modern train ticket booking UI inspired by RedBus, focused on simplicity and speed. Designed with intuitive navigation, clear layouts, and user-friendly interactions. Includes features like train search, PNR status, live tracking, and offers.",
+    image: "/redbus.png",
     link: "https://www.figma.com",
-    category: "Finance UI",
-    stats: { screens: 18, prototype: "Interactive" }
-  },
-  {
-    title: "Harmony Music Player",
-    desc: "An elegant, distraction-free music player concept with dynamic color themes based on album art.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop",
-    link: "https://www.figma.com",
-    category: "Mobile App",
-    stats: { screens: 8, prototype: "Linked" }
+    category: "Web App UI",
+    stats: { screens: 10, prototype: "Interactive" }
   }
 ];
 
 export default function FigmaDesigns() {
   const [rotation, setRotation] = useState(0);
-
+  
   const angle = 360 / designs.length;
-  const radius = window.innerWidth < 768 ? 200 : 280;
+  const radius = window.innerWidth < 768 ? 300 : 450; 
 
   const handleNext = () => setRotation(prev => prev - angle);
   const handlePrev = () => setRotation(prev => prev + angle);
@@ -66,7 +50,7 @@ export default function FigmaDesigns() {
   return (
     <section id="figma" className="py-24 px-6 bg-white/[0.01] overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-4 md:mb-6">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -84,44 +68,45 @@ export default function FigmaDesigns() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-foreground/40 max-w-2xl mx-auto text-sm"
           >
-            <span className="hidden md:inline">— crafted with precision in Figma. </span>
+            <span className="hidden md:inline">— crafted with precision in Figma. </span> 
             Showcasing UI/UX designs where every pixel is purposeful.
           </motion.p>
         </div>
 
         {/* 3D Ring Carousel Wrapper */}
-        <div className="relative w-full h-[350px] md:h-[400px] flex items-center justify-center" style={{ perspective: "1500px" }}>
-
-          <motion.div
-            className="relative w-full max-w-[200px] md:max-w-[260px] h-full"
+        <div className="relative w-full h-[450px] md:h-[550px] flex items-center justify-center" style={{ perspective: "1500px" }}>
+          
+          <motion.div 
+            className="relative w-full max-w-[280px] md:max-w-[400px] h-full"
             style={{ transformStyle: "preserve-3d" }}
-            animate={{ rotateY: rotation }}
+            animate={{ z: -radius, rotateY: rotation }}
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
           >
             {designs.map((design, i) => {
               const currentAngle = i * angle;
               return (
-                <div
+                <div 
                   key={i}
                   className="absolute top-0 left-0 w-full"
                   style={{
                     transform: `rotateY(${currentAngle}deg) translateZ(${radius}px)`,
-                    backfaceVisibility: "hidden"
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden" 
                   }}
                 >
-                  <div className="group relative glass rounded-2xl md:rounded-3xl border border-white/10 overflow-hidden transition-all duration-500 bg-slate-900/60 backdrop-blur-xl hover:border-primary/50 mx-auto flex flex-col h-[280px] md:h-[320px]">
+                  <div className="group relative glass rounded-3xl border border-white/10 overflow-hidden transition-all duration-500 bg-slate-950 hover:border-primary/50 mx-auto flex flex-col h-[380px] md:h-[480px]">
                     {/* Preview Image */}
-                    <div className="relative h-[130px] md:h-[160px] shrink-0 overflow-hidden">
+                    <div className="relative h-[200px] md:h-[260px] shrink-0 overflow-hidden">
                       <img
                         src={design.image}
                         alt={design.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100 bg-white/5"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-80" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
 
-                      <div className="absolute top-3 left-3 flex gap-2 z-10">
-                        <span className="px-2 py-1 bg-[#8b5cf6]/20 backdrop-blur-md text-[#c4b5fd] border border-[#8b5cf6]/30 text-[8px] font-black uppercase tracking-widest rounded-md flex items-center gap-1">
-                          <Figma size={10} /> FIGMA DESIGN
+                      <div className="absolute top-4 left-4 flex gap-2 z-10">
+                        <span className="px-3 py-1.5 bg-[#8b5cf6]/20 backdrop-blur-md text-[#c4b5fd] border border-[#8b5cf6]/30 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center gap-1.5">
+                          <Figma size={12}/> FIGMA DESIGN
                         </span>
                       </div>
 
@@ -151,7 +136,7 @@ export default function FigmaDesigns() {
                         <div className="flex gap-2 md:gap-4 text-foreground/40 text-[8px] md:text-[9px] font-bold uppercase tracking-widest">
                           <span className="flex items-center gap-1"><Layout size={10} /> {design.stats.screens} Screens</span>
                         </div>
-
+                        
                         <a
                           href={design.link}
                           target="_blank"
@@ -170,7 +155,7 @@ export default function FigmaDesigns() {
 
           {/* Navigation Controls */}
           <div className="absolute top-1/2 -translate-y-1/2 left-2 md:left-6 z-50">
-            <button
+            <button 
               onClick={handlePrev}
               className="p-3 md:p-4 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-full text-white/50 hover:text-primary hover:border-primary/50 transition-all hover:scale-110"
             >
@@ -179,7 +164,7 @@ export default function FigmaDesigns() {
           </div>
 
           <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-6 z-50">
-            <button
+            <button 
               onClick={handleNext}
               className="p-3 md:p-4 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-full text-white/50 hover:text-primary hover:border-primary/50 transition-all hover:scale-110"
             >
