@@ -83,7 +83,7 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <motion.a
-            href="/Vidhi_Mandaliya_FlowCV_Resume_2026-04-10 (2).pdf"
+            href="/Vidhi_Mandaliya_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
